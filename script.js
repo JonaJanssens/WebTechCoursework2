@@ -242,17 +242,25 @@ function displayScoresOnMainPage() {
 
 // Timer functions
 function startTimer() {
-    timeLeft = 30; // Reset timer for each question
-    timer = setInterval(() => {
-        timeLeft--;
-        document.getElementById('timer-display').innerText = `Time Left: ${timeLeft}s`;
-        if (timeLeft <= 0) {
-            clearInterval(timer);
-            alert("Time's up!");
-            selectAnswer(""); // Automatically select no answer
-        }
-    }, 1000);
+  timeLeft = 30;
+  const timerBar = document.getElementById('timer-bar');
+
+  timer = setInterval(() => {
+    timeLeft--;
+    document.getElementById('timer-display').innerText = `Time Left: ${timeLeft}s`;
+
+    if (timerBar) {
+      timerBar.style.width = `${(timeLeft / 30) * 100}%`;
+    }
+
+    if (timeLeft <= 0) {
+      clearInterval(timer);
+      alert("Time's up!");
+      selectAnswer(""); // Automatically select no answer
+    }
+  }, 1000);
 }
+
 
 function resetScores() {
   if (confirm("Are you sure you want to clear the leaderboard?")) {
