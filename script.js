@@ -88,12 +88,20 @@ const audioPlayer = document.getElementById('audioPlayer'); // Get the audio pla
 
 // Prompt for player name at the start of the quiz
 function startQuiz() {
-  playerName = prompt("Enter your name:") || "Player";
+  do {
+    playerName = prompt("Enter your name:") || "";
+    playerName = playerName.trim();
+  } while (!playerName);
+
+  // Capitalize first letter only
+  playerName = playerName.charAt(0).toUpperCase() + playerName.slice(1);
+
   currentQuestionIndex = 0;
   score = 0;
   nextButton.style.display = 'none';
   showQuestion(questions[currentQuestionIndex]);
 }
+
 
 function showQuestion(question) {
   questionElement.innerText = question.question;
