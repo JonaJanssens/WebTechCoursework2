@@ -269,6 +269,21 @@ function startTimer() {
   }, 1000);
 }
 
+function shareScore() {
+  const shareText = `I scored ${score}/${questions.length} on the Music Quiz! 🎶 Try it yourself: ${window.location.href}`;
+
+  if (navigator.share) {
+    navigator.share({
+      title: "Music Quiz",
+      text: shareText,
+      url: window.location.href
+    }).catch(console.error);
+  } else {
+    navigator.clipboard.writeText(shareText)
+      .then(() => alert("📋 Copied to clipboard! Ready to paste anywhere 🎉"))
+      .catch(() => alert("Couldn't copy. Try manually sharing."));
+  }
+}
 
 function resetScores() {
   if (confirm("Are you sure you want to clear the leaderboard?")) {
