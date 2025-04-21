@@ -254,6 +254,13 @@ function startTimer() {
     }, 1000);
 }
 
+function resetScores() {
+  if (confirm("Are you sure you want to clear the leaderboard?")) {
+    localStorage.removeItem('scores');
+    displayScoresOnMainPage(); // refresh list
+  }
+}
+
 function showPopup(message) {
   const popup = document.getElementById('popup');
   if (!popup) return; // In case it's not on the page
