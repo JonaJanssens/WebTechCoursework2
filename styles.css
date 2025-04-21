@@ -148,3 +148,19 @@ h2 {
   from { opacity: 1; }
   to { opacity: 0; }
 }
+
+#timer-bar-container {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  height: 15px;
+  border-radius: 10px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+
+#timer-bar {
+  height: 100%;
+  width: 100%;
+  background: #4caf50;
+  transition: width 1s linear;
+}
